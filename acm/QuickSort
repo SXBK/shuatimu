@@ -1,0 +1,17 @@
+void QuickSort(int numToSort[], int begin, int end)
+{
+  if(begin > end) 
+    return ;
+  int first = begin, last = end;
+  int key = numToSort[first];
+  while(first < last)
+  {
+    while(first < last && key >= numToSort[last]) last -- ;
+    numToSort[first] = numToSort[last];
+    while(first < last && key >= numToSort[last]) first ++ ;
+    numToSort[last] = numToSort[first];
+  }
+  numToSort[first] = key;
+  QuickSort(numToSort, begin ,  first-1 );
+  QuickSort(numToSort, first+1, end );
+}
